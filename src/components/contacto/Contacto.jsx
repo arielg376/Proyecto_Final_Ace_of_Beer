@@ -1,5 +1,5 @@
 import React from 'react';
-import Formulario from '../formulario/Formulario';
+import Formulario from '../Formulario/Formulario';
 import './Contacto.css';
 
 const Contacto = () => {
