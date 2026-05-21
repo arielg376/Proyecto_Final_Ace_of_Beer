@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-text">
-        <p>Ace of Base Cervecería - Cerveza artesanal con alma de Rock</p>
+        <p>Ace of Beer Cervecería - Cerveza artesanal con alma de Rock</p>
       </div>
       {loading ? (
         <p>Cargando equipo...</p>
