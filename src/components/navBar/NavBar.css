@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #0a0a0a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.navbar-link {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  color: goldenrod;
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #ffcc00;
+}
+
+.navbar-cart-badge {
+  background-color: #ffcc00;
+  color: #dd0404;
+  border-radius: 50%;
+  padding: 0.2rem 0.6rem;
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+}

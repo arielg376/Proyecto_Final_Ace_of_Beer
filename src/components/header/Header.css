@@ -1,0 +1,73 @@
+.header {
+  background-image: url('/img/header.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.header__logo-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header__logo-left a img {
+  max-width: 100px;
+  height: auto;
+}
+
+
+.header__title {
+  flex: 2;
+  text-align: center;
+}
+
+.header__title h1 {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  font-size: 8rem;
+  color: goldenrod;
+  text-shadow: 2px 2px 4px black;
+  margin: 0;
+}
+
+.header__title p {
+  font-family: 'almendra', cursive;
+  font-size: 1.6rem;
+  color: #ffcc00;
+  margin: 0;
+}
+
+
+.header__logo-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__logo-right a img {
+  max-width: 100px;
+  height: auto;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .header__logo-left,
+  .header__logo-right,
+  .header__title {
+    flex: auto;
+    justify-content: center;
+  }
+  
+  .header__title h1 {
+    font-size: 5rem;
+  }
+}

@@ -1,0 +1,72 @@
+.cart-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.cart-title {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  font-size: 3.5rem;
+  text-align: center;
+  color: #dd0404;
+  text-shadow: 2px 2px 4px #000;
+  margin-bottom: 2rem;
+}
+
+.mensaje-carrito-vacio {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  font-size: 4.5rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.contenedor-carrito-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.acciones-carrito {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-vaciar-carrito {
+  background-color: #ffcc00 !important;
+  color: #dd0404 !important;
+  border: 2px solid #dd0404 !important;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+}
+
+.btn-vaciar-carrito:hover {
+  background-color: #dd0404 !important;
+  color: #ffcc00 !important;
+  border: 2px solid #ffcc00 !important;
+}
+
+.total-carrito {
+  background-color: #1c1c1c;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  border: 2px solid #ffcc00;
+}
+
+.total-carrito h3 {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  font-size: 3rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+  margin: 0;
+}

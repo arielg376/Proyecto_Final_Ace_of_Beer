@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Lemmy Kilmister",
+    "rol": "Frontend Developer",
+    "hobby": "🎸 Fan de Motorhead",
+    "email": "lemmy@gmail.com",
+    "foto":"lemmy2.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Phil Campbell",
+    "rol": "UI/UX Designer",
+    "hobby": "🎨 Diseño y experiencia",
+    "email": "phil@example.com",
+    "foto":"phil.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Mikkey Dee",
+    "rol": "React Specialist",
+    "hobby": "⚡ Context API Expert",
+    "email": "mikkey@example.com",
+    "foto":"mikkey.png"
+  }
+]

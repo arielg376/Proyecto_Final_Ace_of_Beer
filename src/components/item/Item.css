@@ -1,0 +1,49 @@
+.tarjetas_productos {
+  background-color: rgb(2, 36, 31);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 35rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tarjetas_productos h3 {
+  font-family: 'BLACEB__';
+  font-size: 2.5rem;
+  color: #ffcc00;
+  text-shadow: 2rem black;
+  text-align: center;
+}
+
+.tarjetas_productos p {
+  font-family: 'almendra', cursive;
+  font-size: 2rem;
+}
+
+.precio {
+  font-family: 'BLACEB__';
+  font-size: 2.5rem;
+  text-align: center;
+  color: #ffcc00;
+}
+
+.tarjetas_productos img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.tarjetas_productos .btn {
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .tarjetas_productos {
+    width: 90% !important;
+    max-width: 300px;
+  }
+}

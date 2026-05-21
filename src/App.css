@@ -1,0 +1,44 @@
+/* Estilos generales de la aplicación */
+main {
+  width: 90%;
+  flex: 1;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botones generales */
+.btn {
+  background-color: #b22222;
+  color: #f5f5dc;
+  padding: 15px;
+  font-size: 2rem;
+  font-family: 'almendra', cursive;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ffcc00;
+  color: #dd0404;
+}
+
+button {
+  background-color: #b22222;
+  color: #f5f5dc;
+  padding: 15px;
+  font-size: 2rem;
+  font-family: 'almendra', cursive;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffcc00;
+  color: #dd0404;
+}
