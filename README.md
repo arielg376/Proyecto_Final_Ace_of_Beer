@@ -1,16 +1,92 @@
-# React + Vite
+# 🍺 Ace of Beer - E-commerce de Cerveza Artesanal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Cerveza artesanal con alma de rock. Cada estilo es una composición líquida, una mezcla precisa de carácter, sabor y actitud.
 
-Currently, two official plugins are available:
+## 📦 Demo en Vivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Link de Vercel - PENDIENTE]
 
-## React Compiler
+## 🚀 Tecnologías
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** + Vite
+- **Firebase** (Authentication + Firestore)
+- **React Router DOM**
+- **Context API** (Carrito y Autenticación)
+- **CSS puro** con diseño responsive
 
-## Expanding the ESLint configuration
+## 📋 Requisitos Previos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v18 o superior)
+- Cuenta de Firebase (gratuita)
+
+## 🔧 Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/arielg376/Proyecto_Final_Ace_of_Beer.git
+cd Proyecto_Final_Ace_of_Beer
+
+# Instalar dependencias
+npm install
+
+# Configurar Firebase
+# 1. Crear proyecto en Firebase Console
+# 2. Habilitar Authentication (Email/Password)
+# 3. Crear Firestore en modo prueba
+# 4. Copiar credenciales a src/firebase/config.js
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+🔐 Usuario de Prueba (Admin)
+Email: admin@aceofbeer.com
+
+Contraseña: admin123
+
+📋 Funcionalidades
+✅ Autenticación (Login/Registro) con Firebase
+
+✅ CRUD de productos (Agregar/Editar/Eliminar)
+
+✅ Carrito de compras con Context API
+
+✅ Cupones de descuento: ROCK10, BEER20, ACE50
+
+✅ Panel de administración protegido
+
+✅ Diseño responsive con estilo rockero
+
+✅ Modal de confirmación para eliminar
+
+✅ Spinners y manejo de 
+
+🗂️ Estructura del Proyecto
+
+src/
+├── components/
+│   ├── admin/          # Panel de administración
+│   ├── auth/           # Login/Register
+│   ├── layout/         # Header/NavBar/Footer
+│   ├── cart/           # Carrito de compras
+│   └── itemListContainer/ # Catálogo
+├── context/
+│   ├── AuthContext.jsx
+│   └── CartContext.jsx
+├── firebase/
+│   └── config.js
+├── pages/
+│   └── AdminPage.jsx
+└── App.jsx
+
+🎨 Estilo Visual
+Colores: Negro, dorado (#ffcc00), rojo (#dd0404)
+
+Tipografías: BLACEB__, NewRocker-Regular (estilo rockero)
+
+Fondo: Textura con imagen /img/fondo4.png
+
+👤 Autor
+Ariel González - GitHub
+
+📄 Licencia
+Proyecto de uso educativo 
