@@ -28,3 +28,39 @@
   font-size: 1.4rem;
   margin-left: 0.5rem;
 }
+
+.nav-auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.user-email {
+  color: #d4a017;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.btn-logout {
+  background: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-logout:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+
+
+
+
+
+
