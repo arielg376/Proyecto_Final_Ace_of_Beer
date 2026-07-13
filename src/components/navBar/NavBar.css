@@ -1,23 +1,80 @@
+/* NavBar.css - Menú Hamburguesa estilo Ace of Beer */
+
+/* ===== NAVBAR PRINCIPAL ===== */
 .navbar {
   background-color: #0a0a0a;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid #ffcc00;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ===== LOGO / BRAND ===== */
+.navbar-brand .brand-link {
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar-brand .brand-link:hover {
+  color: goldenrod;
+}
+
+/* ===== BOTÓN HAMBURGUESA ===== */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffcc00;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  transition: all 0.3s;
+}
+
+.menu-toggle:hover {
+  color: goldenrod;
+  transform: scale(1.1);
+}
+
+/* ===== MENÚ ===== */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navbar-link {
   font-family: 'BLACEB__', 'NewRocker-Regular';
   color: goldenrod;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .navbar-link:hover {
   color: #ffcc00;
+}
+
+.admin-link {
+  color: #ffcc00 !important;
+}
+
+.admin-link:hover {
+  color: goldenrod !important;
+}
+
+/* ===== CARRITO ===== */
+.cart-link {
+  position: relative;
 }
 
 .navbar-cart-badge {
@@ -29,16 +86,16 @@
   margin-left: 0.5rem;
 }
 
+/* ===== AUTENTICACIÓN ===== */
 .nav-auth-section {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-left: auto;
 }
 
 .user-email {
   color: #d4a017;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -49,6 +106,8 @@
   border-radius: 5px;
   padding: 0.3rem 1rem;
   cursor: pointer;
+  font-family: 'BLACEB__', 'NewRocker-Regular';
+  font-size: 1.2rem;
   font-weight: bold;
   transition: all 0.3s;
 }
@@ -58,9 +117,105 @@
   color: white;
 }
 
+/* ============================================
+   RESPONSIVE - MENÚ HAMBURGUESA
+   ============================================ */
 
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.8rem 1.5rem;
+  }
 
+  .navbar-brand .brand-link {
+    font-size: 1.6rem;
+  }
 
+  .navbar-link {
+    font-size: 1.4rem;
+    padding: 0.4rem 0.8rem;
+  }
 
+  .btn-logout {
+    font-size: 1rem;
+  }
+}
 
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 204, 0, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-link {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-auth-section {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 204, 0, 0.1);
+  }
+
+  .user-email {
+    font-size: 1rem;
+  }
+
+  .btn-logout {
+    font-size: 1rem;
+    padding: 0.3rem 1.5rem;
+  }
+
+  .navbar-cart-badge {
+    font-size: 1.2rem;
+    padding: 0.1rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand .brand-link {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    font-size: 2rem;
+  }
+
+  .navbar-link {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+  }
+
+  .user-email {
+    font-size: 0.9rem;
+  }
+
+  .btn-logout {
+    font-size: 0.9rem;
+  }
+
+  .navbar-cart-badge {
+    font-size: 1rem;
+  }
+}
