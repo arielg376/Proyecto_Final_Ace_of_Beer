@@ -7,13 +7,10 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    const saved = localStorage.getItem('cart');
+    return saved ? JSON.parse(saved) : [];
   });
-
-  
   const [coupon, setCoupon] = useState(null);
 
   
@@ -23,103 +20,59 @@ export const CartProvider = ({ children }) => {
 
   
   const addToCart = (item, quantity) => {
-    setCart(prevCart => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
-      
-      if (existingItem) {
-        return prevCart.map(cartItem =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
-        );
+    setCart(prev => {
+      const exists = prev.find(i => i.id === item.id);
+      if (exists) {
+        return prev.map(i => i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i);
       }
-      
-      return [...prevCart, { ...item, quantity }];
+      return [...prev, { ...item, quantity }];
     });
   };
 
-  // ===== FUNCIONES DEL CARRITO =====
-const removeFromCart = (id) => {
-  setCart(prevCart => {
-    const newCart = prevCart.filter(item => item.id !== id);
-    // Guardar en localStorage para asegurar actualización
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    return newCart;
-  });
-};
-
-const updateQuantity = (id, quantity) => {
-  if (quantity <= 0) {
-    removeFromCart(id);
-    return;
-  }
   
-  setCart(prevCart => {
-    const newCart = prevCart.map(item =>
-      item.id === id ? { ...item, quantity } : item
-    );
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    return newCart;
-  });
-};
-
-const clearCart = () => {
-  setCart([]);
-  setCoupon(null);
-  localStorage.setItem('cart', JSON.stringify([]));
-};
-  const getTotalItems = () => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
+  const removeFromCart = (id) => {
+    setCart(prev => prev.filter(i => i.id !== id));
   };
 
-  const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + (item.precio * item.quantity), 0);
-  };
-
-  const applyCoupon = async (code) => {
-  try {
-    const codeUpper = code.toUpperCase().trim();
-    
-    
-    const q = query(
-      collection(db, "cupones"),
-      where("codigo", "==", codeUpper)
-    );
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-      alert('❌ Cupón inválido');
-      return false;
+  
+  const updateQuantity = (id, quantity) => {
+    if (quantity <= 0) {
+      removeFromCart(id);
+      return;
     }
+    setCart(prev => prev.map(i => i.id === id ? { ...i, quantity } : i));
+  };
 
-    const cuponData = querySnapshot.docs[0].data();
-    
-    setCoupon({
-      discount: cuponData.descuento / 100,
-      name: cuponData.codigo,
-    });
-
-    alert(`✅ Cupón ${cuponData.codigo} aplicado!`);
-    return true;
-  } catch (error) {
-    alert('❌ Error al validar el cupón');
-    return false;
-  }
-};
-
-  const clearCoupon = () => {
+  
+  const clearCart = () => {
+    setCart([]);
     setCoupon(null);
   };
 
-  const getTotalWithDiscount = () => {
-    const total = getTotalPrice();
-    if (coupon) {
-      return total * (1 - coupon.discount);
-    }
-    return total;
-  };
+  
+  const getTotalItems = () => cart.reduce((t, i) => t + i.quantity, 0);
+  const getTotalPrice = () => cart.reduce((t, i) => t + (i.precio * i.quantity), 0);
 
   
+  const applyCoupon = async (code) => {
+    try {
+      const q = query(collection(db, "cupones"), where("codigo", "==", code.toUpperCase().trim()));
+      const snap = await getDocs(q);
+      if (snap.empty) return false;
+      const data = snap.docs[0].data();
+      setCoupon({ discount: data.descuento / 100, name: data.codigo });
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const clearCoupon = () => setCoupon(null);
+  const getTotalWithDiscount = () => {
+    const total = getTotalPrice();
+    return coupon ? total * (1 - coupon.discount) : total;
+  };
+
   return (
     <CartContext.Provider value={{
       cart,
@@ -129,10 +82,10 @@ const clearCart = () => {
       clearCart,
       getTotalItems,
       getTotalPrice,
-      coupon,                 
-      applyCoupon,            
-      clearCoupon,            
-      getTotalWithDiscount,   
+      coupon,
+      applyCoupon,
+      clearCoupon,
+      getTotalWithDiscount,
     }}>
       {children}
     </CartContext.Provider>

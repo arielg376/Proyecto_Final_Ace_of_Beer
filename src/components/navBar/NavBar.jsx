@@ -6,7 +6,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   const { getTotalItems } = useCart();
-  const { user, logout } = useAuth();
+  const { user, logout, isAdmin } = useAuth(); // 👈 isAdmin
   const totalItems = getTotalItems();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -16,12 +16,10 @@ const NavBar = () => {
 
   return (
     <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
-      {/* Botón hamburguesa */}
       <button className="menu-toggle" onClick={toggleMenu}>
         {menuOpen ? '✕' : '☰'}
       </button>
 
-      {/* Enlaces del menú */}
       <Link to="/" className="navbar-link" onClick={() => setMenuOpen(false)}>Inicio</Link>
       <Link to="/nosotros" className="navbar-link" onClick={() => setMenuOpen(false)}>Staff</Link>
       <Link to="/contacto" className="navbar-link" onClick={() => setMenuOpen(false)}>Contacto</Link>
@@ -29,8 +27,13 @@ const NavBar = () => {
       <div className="nav-auth-section" onClick={() => setMenuOpen(false)}>
         {user ? (
           <>
-            <Link to="/admin" className="navbar-link admin-link">⚙️ Admin</Link>
-            <Link to="/admin/cupones" className="navbar-link admin-link">🎫 Cupones</Link> 
+            {/* 👇 SOLO ADMIN VE ESTOS ENLACES */}
+            {isAdmin && (
+              <>
+                <Link to="/admin" className="navbar-link admin-link">⚙️ Admin</Link>
+                <Link to="/admin/cupones" className="navbar-link admin-link">🎫 Cupones</Link>
+              </>
+            )}
             <span className="user-email">👤 {user.email}</span>
             <button className="btn-logout" onClick={logout}>
               Cerrar Sesión

@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/layout/Layout';
-import AdminLayout from './components/admin/AdminLayout'; // 
-import ProtectedRoute from './routes/ProtectedRoute';
+import AdminLayout from './components/admin/AdminLayout';
+import AdminRoute from './routes/AdminRoute'; 
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/Cart';
@@ -12,7 +12,7 @@ import Contacto from './components/contacto/Contacto';
 import Nosotros from './components/nosotros/Nosotros';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import ProductManager from './components/admin/ProductManager'; 
+import ProductManager from './components/admin/ProductManager';
 import GestionCupones from './components/GestionCupones/GestionCupones';
 import './App.css';
 
@@ -27,23 +27,23 @@ function App() {
             <Route path="productos" element={<ItemListContainer />} />
             <Route path="producto/:id" element={<ItemDetailContainer />} />
             <Route path="carrito" element={<Cart />} />
-            <Route path="/admin/cupones" element={<GestionCupones />} />
             <Route path="contacto" element={<Contacto />} />
             <Route path="nosotros" element={<Nosotros />} />
           </Route>
+
           
-        
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          
+         
           <Route path="/admin" element={
-            <ProtectedRoute>
+            <AdminRoute> 
               <AdminLayout />
-            </ProtectedRoute>
+            </AdminRoute>
           }>
             <Route index element={<ProductManager />} />
             <Route path="productos" element={<ProductManager />} />
+            <Route path="cupones" element={<GestionCupones />} /> 
           </Route>
         </Routes>
       </CartProvider>

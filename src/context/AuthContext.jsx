@@ -14,11 +14,24 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null); 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
+      
+     
+      if (user) {
+        
+        if (user.email === 'admin@aceofbeer.com') {
+          setUserRole('admin');
+        } else {
+          setUserRole('user');
+        }
+      } else {
+        setUserRole(null);
+      }
     });
     return unsubscribe;
   }, []);
@@ -44,6 +57,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      setUserRole(null); 
     } catch (error) {
       throw new Error(error.message);
     }
@@ -55,7 +69,9 @@ export const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
-    isAuthenticated: !!user
+    isAuthenticated: !!user,
+    userRole, 
+    isAdmin: userRole === 'admin', 
   };
 
   return (
