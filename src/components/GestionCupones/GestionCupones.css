@@ -1,0 +1,277 @@
+.gestion-cupones-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #f5f5f5;
+}
+
+.gestion-cupones-container h1 {
+    color: #d4a017;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.gestion-cupones-container .subtitle {
+    color: #95a5a6;
+    margin-bottom: 2rem;
+    font-family: 'NewRocker', 'Arial', sans-serif;
+    font-size: 1.1rem;
+}
+
+.cupon-form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 2px solid #d4a017;
+}
+
+.cupon-form h2 {
+    color: #d4a017;
+    margin-bottom: 1.5rem;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-size: 1.6rem;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.cupon-form .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.cupon-form input {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #d4a017;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    color: #1a1a1a;
+    width: 100%;
+    transition: all 0.3s;
+    font-family: 'Arial', sans-serif;
+}
+
+.cupon-form input:focus {
+    outline: none;
+    border-color: #e6b422;
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+}
+
+.cupon-form input::placeholder {
+    color: #888;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.btn-submit {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #d4a017, #b8860b);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-submit:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, #e6b422, #c4941e);
+    box-shadow: 0 0 25px rgba(212, 160, 23, 0.4);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-cancel {
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #e74c3c;
+    color: white;
+    transform: scale(1.02);
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid rgba(212, 160, 23, 0.3);
+    margin: 2rem 0;
+}
+
+.gestion-cupones-container h3 {
+    color: #d4a017;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 3rem;
+    color: #95a5a6;
+    font-family: 'NewRocker', 'Arial', sans-serif;
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: 1px dashed #d4a017;
+}
+
+.cupones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.cupon-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #d4a017;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.cupon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(212, 160, 23, 0.3);
+    border-color: #e6b422;
+}
+
+.cupon-code {
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-size: 2.2rem;
+    color: #d4a017;
+    background: rgba(212, 160, 23, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.cupon-discount {
+    font-size: 1.4rem;
+    color: #27ae60;
+    font-weight: bold;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.cupon-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-edit {
+    padding: 0.5rem 1.5rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.btn-edit:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    padding: 0.5rem 1.5rem;
+    background: #dd0404;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'BLACEB__', 'NewRocker', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.btn-delete:hover {
+    background: #b00303;
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .gestion-cupones-container {
+        padding: 1rem;
+    }
+
+    .cupon-form .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gestion-cupones-container h1 {
+        font-size: 2rem;
+    }
+
+    .cupon-code {
+        font-size: 1.8rem;
+    }
+
+    .cupones-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .cupones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cupon-form {
+        padding: 1rem;
+    }
+
+    .gestion-cupones-container h1 {
+        font-size: 1.6rem;
+    }
+}

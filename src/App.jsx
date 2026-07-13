@@ -13,6 +13,7 @@ import Nosotros from './components/nosotros/Nosotros';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ProductManager from './components/admin/ProductManager'; 
+import GestionCupones from './components/GestionCupones/GestionCupones';
 import './App.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="productos" element={<ItemListContainer />} />
             <Route path="producto/:id" element={<ItemDetailContainer />} />
             <Route path="carrito" element={<Cart />} />
+            <Route path="/admin/cupones" element={<GestionCupones />} />
             <Route path="contacto" element={<Contacto />} />
             <Route path="nosotros" element={<Nosotros />} />
           </Route>

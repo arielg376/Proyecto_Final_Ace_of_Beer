@@ -30,6 +30,7 @@ const NavBar = () => {
         {user ? (
           <>
             <Link to="/admin" className="navbar-link admin-link">⚙️ Admin</Link>
+            <Link to="/admin/cupones" className="navbar-link admin-link">🎫 Cupones</Link> 
             <span className="user-email">👤 {user.email}</span>
             <button className="btn-logout" onClick={logout}>
               Cerrar Sesión
