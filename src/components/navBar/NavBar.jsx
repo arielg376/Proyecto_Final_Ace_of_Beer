@@ -56,7 +56,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-link">Inicio</Link>
-      <Link to="/productos" className="navbar-link">Nuestras Cervezas</Link>
+      <Link to="/nosotros" className="navbar-link">Staff</Link>
       <Link to="/contacto" className="navbar-link">Contacto</Link>
       
       <div className="nav-auth-section">

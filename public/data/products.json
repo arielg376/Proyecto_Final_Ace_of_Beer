@@ -1,57 +1,52 @@
-
-[
-  {
-    "id": 1,
-    "nombre": "Ace of Beer IPA",
-    "estilo": "India Pale Ale",
-    "precio": 1350,
-    "descripcion": "IPA artesanal hecha con el espíritu Motörhead. Intensa, honesta y sin concesiones.",
-    "imagen": "ipa.jpeg",
-    "stock": 45
-  },
-  {
-    "id": 2,
-    "nombre": "Ace of Beer Stout",
-    "estilo": "Stout",
-    "precio": 1350,
-    "descripcion": "Stout artesanal con notas de café y cacao. Oscura, intensa y con alma de riff lento.",
-    "imagen": "stout.png",
-    "stock": 38
-  },
-  {
-    "id": 3,
-    "nombre": "Ace of Beer Red Ale",
-    "estilo": "Red Ale",
-    "precio": 1500,
-    "descripcion": "Red Ale artesanal con notas de malta tostada y caramelo.",
-    "imagen": "red.png",
-    "stock": 52
-  },
-  {
-    "id": 4,
-    "nombre": "Ace of Beer Pilsen Lager",
-    "estilo": "Pilsner",
-    "precio": 1300,
-    "descripcion": "Pilsen de Ace of Beer, la birra que acompaña el ensayo.",
-    "imagen": "pilsen-lager.png",
-    "stock": 65
-  },
-  {
-    "id": 5,
-    "nombre": "Ace of Beer Saison",
-    "estilo": "Seasonal Ale",
-    "precio": 1400,
-    "descripcion": "Saison de Ace de Beer, un rico y sabroso pilsen con una gran variedad de sabor y textura.",
-    "imagen": "saison.png",
-    "stock": 80
-  },
-  {
-    "id": 6,
-    "nombre": "Ace of Beer Mild Ale",
-    "estilo": "Mild Ale",
-    "precio": 2000,
-    "descripcion": "Mild de Ace of Beer, cálida, honesta y llena de textura.",
-    "imagen": "mild.png",
-    "stock": 32
+{
+  "productos": {
+    "producto1": {
+      "nombre": "Ace of Beer IPA 330ml",
+      "precio": 1350,
+      "descripcion": "IPA artesanal hecha con el espíritu Motörhead. Intensa, honesta y sin concesiones.",
+      "stock": 45,
+      "categoria": "IPA",
+      "imagen": "/img/ipa.jpeg"
+    },
+    "producto2": {
+      "nombre": "Ace of Beer Stout 330ml",
+      "precio": 1350,
+      "descripcion": "Stout artesanal con notas de café y cacao. Oscura, intensa y con alma de riff lento.",
+      "stock": 38,
+      "categoria": "Stout",
+      "imagen": "/img/stout.png"
+    },
+    "producto3": {
+      "nombre": "Ace of Beer Red Ale 330ml",
+      "precio": 1500,
+      "descripcion": "Red Ale artesanal con notas de malta tostada y caramelo. Color fuego, alma de distorsión.",
+      "stock": 52,
+      "categoria": "Red Ale",
+      "imagen": "/img/red.png"
+    },
+    "producto4": {
+      "nombre": "Ace of Beer Pilsen Lager 330ml",
+      "precio": 1300,
+      "descripcion": "Pilsen de Ace of Beer es la birra que acompaña el ensayo, en la vereda, la que se comparte sin preguntar.",
+      "stock": 65,
+      "categoria": "Lager",
+      "imagen": "/img/pilsen-lager.png"
+    },
+    "producto5": {
+      "nombre": "Ace of Beer Saison 330ml",
+      "precio": 1800,
+      "descripcion": "Saison de Ace of Beer es como un disco raro que solo los que saben se animan a poner.",
+      "stock": 28,
+      "categoria": "Saison",
+      "imagen": "/img/saison.png"
+    },
+    "producto6": {
+      "nombre": "Ace of Beer Mild Ale 330ml",
+      "precio": 2000,
+      "descripcion": "Mild de Ace of Beer es como ese tema lento que cierra el disco: cálido, honesto y lleno de textura.",
+      "stock": 32,
+      "categoria": "Mild Ale",
+      "imagen": "/img/mild.png"
+    }
   }
-]
+}

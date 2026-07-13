@@ -12,9 +12,12 @@ const Item = ({ producto }) => {
 
   return (
     <div className="tarjetas_productos">
-      <img src={`/img/${producto.imagen}`} alt={producto.nombre} />
+      <img 
+        src={producto.imagen || '/img/default-beer.png'} 
+        alt={producto.nombre} 
+      />
       <h3>{producto.nombre}</h3>
-      <p>{producto.estilo}</p>
+      <p>{producto.categoria || producto.estilo || 'Estilo artesanal'}</p>
       <p className="precio">${producto.precio}</p>
       <Link to={`/producto/${producto.id}`}>
         <button className="btn">Ver Detalle</button>

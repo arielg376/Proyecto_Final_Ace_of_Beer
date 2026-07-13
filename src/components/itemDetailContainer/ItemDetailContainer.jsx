@@ -1,35 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import { useCart } from '../../context/CartContext';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+  const [error, setError] = useState(null);
+  const [cantidad, setCantidad] = useState(1);
 
   useEffect(() => {
-    fetch('/data/products.json')
-      .then(response => response.json())
-      .then(data => {
-        const found = data.find(p => p.id === parseInt(id));
-        setProducto(found);
+    const fetchProducto = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        if (!id) {
+          setError('ID de producto no válido');
+          setLoading(false);
+          return;
+        }
+
+        // 👇 ESTA ES LA LÍNEA CLAVE: BUSCA EN FIRESTORE
+        const docRef = doc(db, 'productos', id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setProducto({ id: docSnap.id, ...data });
+        } else {
+          setError('Producto no encontrado');
+        }
+      } catch (err) {
+        setError('Error al cargar el producto');
+      } finally {
         setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error cargando producto:', error);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchProducto();
   }, [id]);
 
-  if (loading) {
-    return <div className="loading">🍺 Cargando detalles de la cerveza...</div>;
-  }
+  const handleAddToCart = () => {
+    if (!producto) return;
+    addToCart(producto, cantidad);
+    alert(`✅ ${producto.nombre} agregado al carrito`);
+  };
 
-  if (!producto) {
-    return <div className="loading">❌ Producto no encontrado</div>;
-  }
+  if (loading) return <div className="loading">🍺 Cargando...</div>;
+  if (error) return <div className="loading">❌ {error}</div>;
+  if (!producto) return <div className="loading">🍺 Producto no encontrado</div>;
 
-  return <ItemDetail producto={producto} />;
+  return <ItemDetail producto={producto} onAddToCart={handleAddToCart} />;
 };
 
 export default ItemDetailContainer;

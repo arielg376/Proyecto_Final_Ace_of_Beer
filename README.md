@@ -3,8 +3,7 @@
 > Cerveza artesanal con alma de rock. Cada estilo es una composición líquida, una mezcla precisa de carácter, sabor y actitud.
 
 ## 📦 Demo en Vivo
-
-[Link de Vercel - PENDIENTE]
+https://ace-of-beer.vercel.app
 
 ## 🚀 Tecnologías
 
@@ -89,4 +88,4 @@ Fondo: Textura con imagen /img/fondo4.png
 Ariel González - GitHub
 
 📄 Licencia
-Proyecto de uso educativo 
+Proyecto de uso educativo para Talento Tech - React 

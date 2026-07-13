@@ -20,6 +20,7 @@ const ProductManager = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   
+  // ===== ESTADO DEL FORMULARIO =====
   const [formData, setFormData] = useState({
     nombre: '',
     precio: '',
@@ -29,7 +30,10 @@ const ProductManager = () => {
     imagen: ''
   });
 
-  // READ: Cargar productos
+  // ===== ESTADO PARA SUBIDA DE IMÁGENES (NUEVO) =====
+  const [uploading, setUploading] = useState(false);
+
+  // ===== FUNCIONES DEL CRUD =====
   const loadProducts = async () => {
     try {
       setLoading(true);
@@ -47,7 +51,6 @@ const ProductManager = () => {
     }
   };
 
-  // CREATE: Agregar producto
   const addProduct = async (e) => {
     e.preventDefault();
     const validationError = validateForm();
@@ -74,7 +77,6 @@ const ProductManager = () => {
     }
   };
 
-  // UPDATE: Editar producto
   const updateProduct = async (e) => {
     e.preventDefault();
     const validationError = validateForm();
@@ -101,7 +103,6 @@ const ProductManager = () => {
     }
   };
 
-  // DELETE: Eliminar producto
   const deleteProduct = async () => {
     try {
       setLoading(true);
@@ -117,6 +118,77 @@ const ProductManager = () => {
     }
   };
 
+ // ===== FUNCIONES DE SUBIDA DE IMAGEN (=====
+const handleImageUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) {
+    alert('❌ No seleccionaste ningún archivo');
+    return;
+  }
+
+  // Validar que sea una imagen
+  const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/jpg'];
+  if (!validTypes.includes(file.type)) {
+    alert('❌ Formato no soportado. Usa: JPG, PNG, GIF o WEBP');
+    return;
+  }
+
+  // Validar tamaño (máximo 5MB)
+  if (file.size > 5 * 1024 * 1024) {
+    alert('❌ La imagen es demasiado grande (máximo 5MB)');
+    return;
+  }
+
+  setUploading(true);
+
+  // Leer archivo y convertir a base64
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    try {
+      // Obtener la cadena base64 SIN el prefijo
+      const base64String = event.target.result.split(',')[1];
+      
+      if (!base64String) {
+        alert('❌ Error al leer la imagen. Intenta con otra.');
+        setUploading(false);
+        return;
+      }
+
+      // Subir a ImgBB
+      const formData = new FormData();
+      formData.append('image', base64String);
+      formData.append('key', import.meta.env.VITE_IMGBB_API_KEY);
+
+      const response = await fetch('https://api.imgbb.com/1/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormData({ ...formData, imagen: data.data.url });
+        alert('✅ Imagen subida correctamente');
+      } else {
+        alert('❌ Error al subir la imagen: ' + (data.error?.message || 'Error desconocido'));
+        console.error('Detalle del error:', data);
+      }
+    } catch (error) {
+      alert('❌ Error de conexión: ' + error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  reader.onerror = () => {
+    alert('❌ Error al leer el archivo');
+    setUploading(false);
+  };
+
+  reader.readAsDataURL(file);
+};
+
+  // ===== FUNCIONES DEL FORMULARIO =====
   const resetForm = () => {
     setFormData({
       nombre: '',
@@ -142,12 +214,17 @@ const ProductManager = () => {
   };
 
   const validateForm = () => {
-    if (!formData.nombre.trim()) return 'El nombre es obligatorio';
-    if (Number(formData.precio) <= 0) return 'El precio debe ser mayor a 0';
-    if (Number(formData.stock) < 0) return 'El stock no puede ser negativo';
-    if (!formData.descripcion.trim()) return 'La descripción es obligatoria';
-    return null;
-  };
+  const nombre = formData.nombre || '';
+  const precio = formData.precio || '';
+  const descripcion = formData.descripcion || '';
+  const stock = formData.stock || '';
+
+  if (!nombre.trim()) return 'El nombre es obligatorio';
+  if (Number(precio) <= 0) return 'El precio debe ser mayor a 0';
+  if (Number(stock) < 0) return 'El stock no puede ser negativo';
+  if (!descripcion.trim()) return 'La descripción es obligatoria';
+  return null;
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -213,6 +290,33 @@ const ProductManager = () => {
             value={formData.categoria}
             onChange={(e) => setFormData({...formData, categoria: e.target.value})}
           />
+          
+          {/* 👇 NUEVO: CAMPO PARA SUBIR IMAGEN */}
+          <div className="full-width image-upload-section">
+            <label>📸 Subir imagen:</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={uploading}
+              className="file-input"
+            />
+            {uploading && <span className="upload-status">⏳ Subiendo imagen...</span>}
+            {formData.imagen && (
+              <div className="image-preview">
+                <img src={formData.imagen} alt="Vista previa" />
+                <button 
+                  type="button" 
+                  className="btn-remove-image"
+                  onClick={() => setFormData({...formData, imagen: ''})}
+                >
+                  ✖
+                </button>
+              </div>
+            )}
+            <p className="image-hint">O escribí la URL manualmente en el campo de abajo</p>
+          </div>
+
           <input
             type="text"
             placeholder="URL de la imagen (ej: /img/ipa.jpeg)"
@@ -243,7 +347,6 @@ const ProductManager = () => {
       </form>
 
       {error && <div className="error-message">❌ {error}</div>}
-
       {loading && <div className="loading-message">⏳ Cargando productos...</div>}
 
       {!loading && (
